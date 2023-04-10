@@ -1,0 +1,43 @@
+.weather-card__bg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 20rem;
+    /* filter: opacity(0.2); */
+    /* filter: blur(1px); */
+    height: 100%;
+    margin: -1.25rem;
+  }
+  
+  .weather-card__bg--sunny {
+    background-image: url('./assets/weather-clear.avif');
+  }
+  
+  .weather-card__bg--rainy {
+    background-image: url('./assets/weather-rainy.avif');
+  }
+  
+  .weather-card__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  
+  .air-quality__badge--highlight {
+    position: relative;
+    /* transform: translateY(-10%); */
+  }
+  .air-quality__badge--highlight::after {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 5px 0 5px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    border-color: #2D3748 transparent transparent transparent;
+  }
+  
