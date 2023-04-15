@@ -1,22 +1,37 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, useDisclosure } from '@chakra-ui/react';
 import { WeatherForecast } from '@weather-wise/feature';
-import logo from '../../assets/logo.png';
-import { Sidebar, Navbar } from '@weather-wise/ui';
+import { BsBarChart } from 'react-icons/bs';
+import { BiMap, BiChalkboard } from 'react-icons/bi';
+import { FiSettings } from 'react-icons/fi';
+import {
+  Sidebar,
+  SidebarContainer,
+  sidebarContext,
+  Navbar,
+} from '@weather-wise/ui';
 import { Outlet } from 'react-router-dom';
 
 export default function Layout() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const navItems = [
+    { icon: BsBarChart, ariaLabel: 'Dashboard', to: '' },
+    { icon: BiChalkboard, ariaLabel: 'Forecast', to: 'forecast' },
+    { icon: BiMap, ariaLabel: 'Location', to: 'location' },
+    { icon: FiSettings, ariaLabel: 'Settings', to: 'settings' },
+  ];
   return (
-    <Flex>
-      <Box pt='8' pl='4'>
-        <Sidebar logo={logo} />
-      </Box>
-      <Box w={{ base: '100%', xl: 'calc(100% - 64px)' }} ml="64px" p="8">
-        <Navbar avatar="Gaurav Soni" />
-        <Outlet />
-      </Box>
-      <Box w={{ base: '30%' }} p="8">
-        <WeatherForecast />
-      </Box>
-    </Flex>
+    <sidebarContext.Provider value={{ isOpen, onOpen, onClose }}>
+      <SidebarContainer
+        sidebar={<Sidebar navItems={navItems} />}
+        secondarySidebar={<WeatherForecast />}
+      >
+        <Box paddingBottom={{ base: 4, md: 6 }} px={{ base: 2, md: 0 }}>
+          <Navbar avatar="Gaurav Soni" />
+        </Box>
+        <Box>
+          <Outlet />
+        </Box>
+      </SidebarContainer>
+    </sidebarContext.Provider>
   );
 }

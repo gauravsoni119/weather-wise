@@ -10,6 +10,7 @@ export default createBrowserRouter([
       { path: '', element: <Dashboard /> },
       { path: 'location', element: 'Location' },
       { path: 'settings', element: 'Settings' },
+      { path: 'forecast', element: 'Forecast' },
     ],
   },
 ]);

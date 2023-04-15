@@ -10,18 +10,22 @@ import {
   useColorModeValue,
   IconButton,
 } from '@chakra-ui/react';
+import { useContext } from 'react';
 import { BsSearch } from 'react-icons/bs';
+import { FiMenu } from 'react-icons/fi';
 import { IoNotificationsOutline } from 'react-icons/io5';
+import { sidebarContext } from '../sidebar/sidebar-context';
 
 export interface NavbarProps {
   avatar: string;
 }
 
 export function Navbar({ avatar }: NavbarProps) {
+  const { onOpen } = useContext(sidebarContext);
   return (
-    <Flex pb="8" justifyContent="space-between">
+    <Flex justifyContent="space-between">
       <Box>
-        <HStack>
+        <HStack display={{ base: 'none', md: 'flex' }}>
           <Avatar name={avatar} src={avatar} size="sm" mr="2" />
           <Flex direction="column" alignItems="flex-start">
             <Heading as="h2" size="md" fontWeight="medium">
@@ -32,6 +36,12 @@ export function Navbar({ avatar }: NavbarProps) {
             </Heading>
           </Flex>
         </HStack>
+        <IconButton
+          aria-label="menu"
+          display={{ base: 'flex', md: 'none' }}
+          onClick={onOpen}
+          icon={<FiMenu />}
+        />
       </Box>
       <Box>
         <HStack>

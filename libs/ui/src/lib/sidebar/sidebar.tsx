@@ -1,41 +1,41 @@
-import { Box, IconButton, Image, Tooltip, VStack } from '@chakra-ui/react';
-import { BsBarChart } from 'react-icons/bs';
-import { BiMap } from 'react-icons/bi';
-import { FiSettings } from 'react-icons/fi';
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import {
+  Drawer,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerOverlay,
+  VStack,
+  DrawerBody,
+  Icon,
+} from '@chakra-ui/react';
+import { SiWwise } from 'react-icons/si';
+import { sidebarContext } from './sidebar-context';
+import SidebarItems, { SidebarItem } from '../sidebar-items/sidebar-items';
 
 export interface SidebarProps {
-  logo: string;
+  navItems: SidebarItem[];
 }
 
-export function Sidebar({ logo }: SidebarProps) {
-  const navItems = [
-    { component: <BsBarChart />, ariaLabel: 'Dashboard', to: '' },
-    { component: <BiMap />, ariaLabel: 'Location', to: 'location' },
-    { component: <FiSettings />, ariaLabel: 'Settings', to: 'settings' },
-  ];
+export function Sidebar({ navItems }: SidebarProps) {
+  const { isOpen, onClose } = useContext(sidebarContext);
   return (
-    <Box as="aside" w="64px" pos="fixed" p={2}>
-      <Image src={logo} pb="8" />
-      <VStack spacing="5">
-        {navItems.map((item, index) => (
-          <NavLink to={item.to} key={index}>
-            {({ isActive }) => (
-              <Tooltip label={item.ariaLabel} placement='right'>
-                <IconButton
-                  boxShadow={isActive? 'md' : 'none'}
-                  bg={isActive ? 'secondary.500' : 'transparent'}
-                  aria-label={item.ariaLabel}
-                  colorScheme={isActive ? 'secondary' : 'gray'}
-                  borderRadius="xl"
-                  icon={item.component}
-                />
-              </Tooltip>
-            )}
-          </NavLink>
-        ))}
+    <React.Fragment>
+      <VStack spacing="5" as="nav" display={{ base: 'none', md: 'flex' }}>
+        <Icon as={SiWwise} boxSize={8} />
+        <SidebarItems navItems={navItems} mode="over" />
       </VStack>
-    </Box>
+      <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Weather Wise</DrawerHeader>
+          <DrawerBody>
+            <SidebarItems navItems={navItems} />
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </React.Fragment>
   );
 }
 
