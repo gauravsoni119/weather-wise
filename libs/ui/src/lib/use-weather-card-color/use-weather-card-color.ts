@@ -19,8 +19,10 @@ export const WEATHER_CARD_COLORS = {
   },
 } as const;
 
-
-export function useWeatherCardColor(color: keyof typeof WEATHER_CARD_COLORS, type: 'bg' | 'fg') {
+export function useWeatherCardColor(
+  color: keyof typeof WEATHER_CARD_COLORS,
+  type: 'bg' | 'fg'
+) {
   const weatherColor = WEATHER_CARD_COLORS[color];
   return useColorModeValue(weatherColor[type][0], weatherColor[type][1]);
 }

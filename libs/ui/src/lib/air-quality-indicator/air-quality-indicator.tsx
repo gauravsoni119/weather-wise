@@ -9,7 +9,9 @@ export function AirQualityIndicator(props: AirQualityIndicatorProps) {
   return (
     <Box bgColor={useWeatherCardColor('light', 'bg')} borderRadius="2xl" p={4}>
       <HStack justifyContent="space-between" mb={2}>
-        <Text color='primary.800' fontSize="xs">Good</Text>
+        <Text color="primary.800" fontSize="xs">
+          Good
+        </Text>
         <Text
           fontSize="xs"
           className="air-quality__badge--highlight"
@@ -20,7 +22,9 @@ export function AirQualityIndicator(props: AirQualityIndicatorProps) {
         >
           Standard
         </Text>
-        <Text color='primary.800' fontSize="xs">Hazardous</Text>
+        <Text color="primary.800" fontSize="xs">
+          Hazardous
+        </Text>
       </HStack>
       <Progress hasStripe value={50} colorScheme="orange" size="xs" />
     </Box>
