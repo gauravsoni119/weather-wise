@@ -10,7 +10,7 @@ import {
   useColorModeValue,
   Flex,
   VStack,
-  Button
+  Button,
 } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { IconType } from 'react-icons';
@@ -93,7 +93,9 @@ export function WeatherCard(props: WeatherCardProps) {
                 {props.kpiBadge}
               </Badge>
             </HStack>
-            <Text textTransform='capitalize' textColor={textColor}>{props.kpiLabel}</Text>
+            <Text textTransform="capitalize" textColor={textColor}>
+              {props.kpiLabel}
+            </Text>
           </Box>
           <Box>{props.children}</Box>
         </VStack>
