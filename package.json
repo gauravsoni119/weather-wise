@@ -8,6 +8,9 @@
     "lint": "nx run-many --target=lint",
     "format": "nx format:write",
     "format:check": "nx format:check",
+    "lint:affected": "npx nx affected -t lint --parallel=3",
+    "test:affected": "npx nx affected -t test --parallel=3",
+    "build:affected": "npx nx affected -t build --parallel=3",
     "test": "nx run-many --target=test"
   },
   "private": true,
