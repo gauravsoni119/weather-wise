@@ -6,7 +6,7 @@ export interface WeatherForecastProps {}
 export function WeatherForecast(props: WeatherForecastProps) {
   return (
     <Box as="aside" pos="fixed" display={{ base: 'none', md: 'block' }}>
-      <h1>Welcome to WeatherForecast!</h1>
+      <h1>Welcome to WeatherForecast Component!</h1>
     </Box>
   );
 }
