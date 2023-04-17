@@ -32,7 +32,7 @@ jobs:
       - name: Build
         run: npm run build:affected
       - name: Deploy to Netlify
-        uses: netlify/actions/cli@v1.2.2
+        uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
