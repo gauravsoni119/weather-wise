@@ -5,5 +5,4 @@ export * from './lib/air-quality-indicator/air-quality-indicator';
 export * from './lib/sidebar/sidebar';
 export * from './lib/sidebar/sidebar-context';
 export * from './lib/sidebar/sidebar-container/sidebar-container';
-export * from './lib/sidebar/sidebar-content/sidebar-content';
 export * from './lib/navbar/navbar';

@@ -1,0 +1,34 @@
+name: Weather wise CI
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Run CI on pull request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - uses: nrwl/nx-set-shas@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Check Formatting
+        run: npm run format:check
+      - name: Lint
+        run: npm run lint:affected
+      # - name: Test
+      #   run: npm run test:affected -- --configuration=ci
+      - name: Build
+        run: npm run build:affected
