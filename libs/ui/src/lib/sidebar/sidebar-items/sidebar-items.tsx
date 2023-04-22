@@ -23,7 +23,7 @@ export interface SidebarItemsProps {
 }
 
 export function SidebarItems({ navItems, mode = 'semi' }: SidebarItemsProps) {
-  const sidebarItemInSemiMode = (item: SidebarItem, index: number) => (
+  const sidebarItemInOverMode = (item: SidebarItem, index: number) => (
     <ListItem key={index}>
       <Link
         display="block"
@@ -44,7 +44,7 @@ export function SidebarItems({ navItems, mode = 'semi' }: SidebarItemsProps) {
       </Link>
     </ListItem>
   );
-  const sidebarItemInOverMode = (
+  const sidebarItemInSemiMode = (
     { icon: Icon, ...item }: SidebarItem,
     index: number
   ) => (

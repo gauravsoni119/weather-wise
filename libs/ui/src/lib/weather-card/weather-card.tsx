@@ -10,7 +10,6 @@ import {
   useColorModeValue,
   Flex,
   VStack,
-  Button,
 } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { IconType } from 'react-icons';

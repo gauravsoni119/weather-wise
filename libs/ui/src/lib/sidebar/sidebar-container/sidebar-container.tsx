@@ -1,10 +1,10 @@
-import React from 'react';
-import { Box, Flex, Grid, GridItem } from '@chakra-ui/react';
+import { ReactNode, ReactElement } from 'react';
+import { Box, Grid, GridItem } from '@chakra-ui/react';
 
 export interface SidebarContainerProps {
-  children: React.ReactNode;
-  sidebar: React.ReactElement;
-  secondarySidebar: React.ReactElement;
+  children: ReactNode;
+  sidebar: ReactElement;
+  secondarySidebar: ReactElement;
 }
 
 export function SidebarContainer({

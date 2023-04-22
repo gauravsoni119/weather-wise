@@ -10,18 +10,17 @@ import {
   useColorModeValue,
   IconButton,
 } from '@chakra-ui/react';
-import { useContext } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { FiMenu } from 'react-icons/fi';
 import { IoNotificationsOutline } from 'react-icons/io5';
-import { sidebarContext } from '../sidebar/sidebar-context';
+import { useSidebar } from '../sidebar/sidebar-context/sidebar-context';
 
 export interface NavbarProps {
   avatar: string;
 }
 
 export function Navbar({ avatar }: NavbarProps) {
-  const { onOpen } = useContext(sidebarContext);
+  const { onOpen } = useSidebar();
   return (
     <Flex justifyContent="space-between">
       <Box>
