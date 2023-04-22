@@ -32,4 +32,3 @@ describe('sidebarContext', () => {
     expect(error).toThrowError();
   });
 });
-
