@@ -13,10 +13,10 @@ import { Outlet } from 'react-router-dom';
 
 export default function Layout() {
   const navItems = [
-    { icon: BsBarChart, ariaLabel: 'Dashboard', to: '' },
-    { icon: BiChalkboard, ariaLabel: 'Forecast', to: 'forecast' },
-    { icon: BiMap, ariaLabel: 'Location', to: 'location' },
-    { icon: FiSettings, ariaLabel: 'Settings', to: 'settings' },
+    { icon: BsBarChart, label: 'Dashboard', to: '' },
+    { icon: BiChalkboard, label: 'Forecast', to: 'forecast' },
+    { icon: BiMap, label: 'Location', to: 'location' },
+    { icon: FiSettings, label: 'Settings', to: 'settings' },
   ];
   return (
     <SidebarProvider>

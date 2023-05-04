@@ -53,11 +53,17 @@
       }
     },
     "test": {
-      "executor": "@nrwl/vite:test",
+      "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/weather-wise"],
       "options": {
+        "jestConfig": "libs/data-access/jest.config.ts",
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/apps/weather-wise"
+        "codeCoverage": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true
+        }
       }
     },
     "lint": {

@@ -20,7 +20,7 @@ export function Dashboard() {
     dispatch(fetchCurrentWeather('Amsterdam'));
   }, [dispatch]);
 
-  if (loading === LOADING_STATES.loading) return <div>Loading...</div>;
+  if (loading === LOADING_STATES.Loading) return <div>Loading...</div>;
 
   if (!data) return null;
   const { current } = data;
