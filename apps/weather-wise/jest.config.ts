@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'feature',
+  displayName: 'weather-wise',
   preset: '../../jest.preset.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',

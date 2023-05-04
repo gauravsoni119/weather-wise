@@ -18,7 +18,7 @@ function TestSidebarContainer() {
       <SidebarContainer
         sidebar={
           <Sidebar
-            navItems={[{ ariaLabel: 'dashboard', icon: BsBarChart, to: '' }]}
+            navItems={[{ label: 'dashboard', icon: BsBarChart, to: '' }]}
           />
         }
         secondarySidebar={<MockedSecondarySidebar />}

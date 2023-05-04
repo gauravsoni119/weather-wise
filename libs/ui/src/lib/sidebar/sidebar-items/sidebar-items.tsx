@@ -13,7 +13,7 @@ import { NavLink } from 'react-router-dom';
 
 export interface SidebarItem {
   icon: IconType;
-  ariaLabel: string;
+  label: string;
   to: string;
 }
 
@@ -39,7 +39,7 @@ export function SidebarItems({ navItems, mode = 'semi' }: SidebarItemsProps) {
       >
         <Flex alignItems="center" p={2}>
           <Icon boxSize="5" as={item.icon} />
-          <Text ml={2}>{item.ariaLabel}</Text>
+          <Text ml={2}>{item.label}</Text>
         </Flex>
       </Link>
     </ListItem>
@@ -49,14 +49,14 @@ export function SidebarItems({ navItems, mode = 'semi' }: SidebarItemsProps) {
     index: number
   ) => (
     <ListItem key={index}>
-      <Tooltip label={item.ariaLabel} placement="right">
+      <Tooltip label={item.label} placement="right">
         <IconButton
           key={index}
           as={NavLink}
           _focus={{ bg: 'gray.100' }}
           _activeLink={{ boxShadow: 'md', bg: 'secondary.500', color: 'white' }}
           bg="transparent"
-          aria-label={item.ariaLabel}
+          aria-label={item.label}
           borderRadius="xl"
           icon={<Icon />}
           to={item.to}

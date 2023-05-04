@@ -7,7 +7,7 @@ import SidebarItems, { SidebarItem } from './sidebar-items';
 describe('SidebarItems', () => {
   it('should render sidebar items in semi mode', () => {
     const navItems: SidebarItem[] = [
-      { ariaLabel: 'Dashboard', icon: BsBarChart, to: '' },
+      { label: 'Dashboard', icon: BsBarChart, to: '' },
     ];
     render(<SidebarItems navItems={navItems} />, {
       wrapper: BrowserRouter,
@@ -17,7 +17,7 @@ describe('SidebarItems', () => {
 
   it('should render sidebar items in over mode', () => {
     const navItems: SidebarItem[] = [
-      { ariaLabel: 'Dashboard', icon: BsBarChart, to: '' },
+      { label: 'Dashboard', icon: BsBarChart, to: '' },
     ];
     render(<SidebarItems navItems={navItems} mode="over" />, {
       wrapper: BrowserRouter,
