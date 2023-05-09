@@ -33,7 +33,7 @@ function renderSidebarContainer() {
   return render(<TestSidebarContainer />, { wrapper: BrowserRouter });
 }
 
-describe.only('SidebarContainer', () => {
+describe('SidebarContainer', () => {
   it('should render primary sidebar', () => {
     renderSidebarContainer();
     expect(screen.getAllByRole('link').at(0)).toBeInTheDocument();

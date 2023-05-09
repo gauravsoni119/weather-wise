@@ -1,12 +1,8 @@
 import axios from 'axios';
-import ENV_KEYS from '../constant';
 export default axios.create({
-  baseURL:
-    ENV_KEYS.VITE_USE_MOCK === 'true'
-      ? 'http://localhost:3000'
-      : `https://${ENV_KEYS.VITE_RAPID_HOST}`,
+  baseURL: process.env.VITE_BASE_URL,
   headers: {
-    'X-RapidAPI-Key': ENV_KEYS.VITE_RAPID_API_KEY,
-    'X-RapidAPI-Host': ENV_KEYS.VITE_RAPID_HOST,
+    'X-RapidAPI-Key': process.env.VITE_RAPID_API_KEY,
+    'X-RapidAPI-Host': process.env.VITE_RAPID_HOST,
   },
 });

@@ -27,8 +27,8 @@ jobs:
         run: npm run format:check
       - name: Lint
         run: npm run lint:affected
-      # - name: Test
-      #   run: npm run test:affected -- --configuration=ci
+      - name: Test
+        run: npm run test:affected -- --configuration=ci
       - name: Build
         run: npm run build:affected
       - name: Deploy to Netlify
