@@ -7,4 +7,10 @@ export default {
     '^.+\\.[tj]sx?$': ['babel-jest', { presets: ['@nrwl/react/babel'] }],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coveragePathIgnorePatterns: [
+    '../data-access',
+    '../ui',
+    '../util',
+    '../test-util',
+  ],
 };

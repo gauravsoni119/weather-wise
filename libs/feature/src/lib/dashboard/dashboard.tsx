@@ -13,14 +13,13 @@ import { LOADING_STATES } from '@weather-wise/util';
 export function Dashboard() {
   const dispatch = useWeatherDispatch();
   const { data, loading, error } = useWeatherSelector(selectCurrentWeather);
-  console.log(data, loading, error);
 
   useEffect(() => {
-    console.log('called...');
     dispatch(fetchCurrentWeather('Amsterdam'));
   }, [dispatch]);
 
   if (loading === LOADING_STATES.Loading) return <div>Loading...</div>;
+  if (error) return <div>error...</div>;
 
   if (!data) return null;
   const { current } = data;

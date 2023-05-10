@@ -27,10 +27,14 @@ jobs:
         run: npm run format:check
       - name: Lint
         run: npm run lint:affected
-      # - name: Test
-      #   run: npm run test:affected -- --configuration=ci
+      - name: Test
+        run: npm run test:affected -- --configuration=ci
       - name: Build
         run: npm run build:affected
+        env:
+          VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
+          VITE_RAPID_API_KEY: ${{ secrets.VITE_RAPID_API_KEY }}
+          VITE_RAPID_HOST: ${{ secrets.VITE_RAPID_HOST }}
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         env:

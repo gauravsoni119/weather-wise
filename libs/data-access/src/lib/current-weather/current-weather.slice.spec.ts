@@ -12,12 +12,6 @@ import { mswServer } from '../../../../../mocks/server';
 import { errorHandler } from '../../../../../mocks/handlers';
 import { LOADING_STATES } from '@weather-wise/util';
 
-jest.mock('../constant', () => ({
-  VITE_USE_MOCK: 'true',
-  VITE_RAPID_API_KEY: '123',
-  VITE_RAPID_HOST: 'localhost',
-}));
-
 describe('currentWeather Slice', () => {
   it('should handle initial state', () => {
     const expected = initialState;

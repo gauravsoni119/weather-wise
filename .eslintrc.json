@@ -24,12 +24,16 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "rules": {
+        "no-console": "error"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nrwl/nx/javascript"],
-      "rules": {}
+      "rules": {
+        "no-console": "error"
+      }
     },
     {
       "files": [
@@ -44,7 +48,8 @@
         "testing-library/await-async-query": "error",
         "testing-library/no-await-sync-query": "error",
         "testing-library/no-debugging-utils": "warn",
-        "testing-library/no-dom-import": "off"
+        "testing-library/no-dom-import": "off",
+        "no-console": "error"
       }
     }
   ]

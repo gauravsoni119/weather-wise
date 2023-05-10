@@ -17,6 +17,7 @@
     "paths": {
       "@weather-wise/data-access": ["libs/data-access/src/index.ts"],
       "@weather-wise/feature": ["libs/feature/src/index.ts"],
+      "@weather-wise/test-util": ["libs/test-util/src/index.ts"],
       "@weather-wise/ui": ["libs/ui/src/index.ts"],
       "@weather-wise/util": ["libs/util/src/index.ts"]
     }
