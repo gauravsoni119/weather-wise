@@ -29,6 +29,8 @@ jobs:
         run: npm run lint:affected
       - name: Test
         run: npm run test:affected -- --configuration=ci
+        env:
+          VITE_BASE_URL: 'http://localhost:3000'
       - name: Build
         run: npm run build:affected
         env:
