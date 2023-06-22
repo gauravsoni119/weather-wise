@@ -1,9 +1,28 @@
-import { getFullWindDirection } from '@weather-wise/util';
+import {
+  getFullWindDirection,
+  ForecastDayModel,
+  HourModel,
+  MoonPhase,
+} from '@weather-wise/util';
 import {
   CurrentWeatherResponse,
   CurrentWeatherModel,
 } from './models/current-weather.model';
+import { ForecastModel } from './models/forecast.model';
+import {
+  AstroResponse,
+  DayResponse,
+  ForecastResponse,
+  HourResponse,
+} from './models/weatherapi.model';
 
+/**
+ * Transform a current weather response from a weatherapi.com to a current weather model.
+ * @param {CurrentWeatherResponse} res - The parameter `res` is of type `CurrentWeatherResponse`, which
+ * is likely an object containing data related to the current weather conditions at a specific
+ * location.
+ * @returns Simplified version of `CurrentWeatherResponse`
+ */
 export function mapToCurrentWeather(
   res: CurrentWeatherResponse
 ): CurrentWeatherModel {
@@ -30,4 +49,107 @@ export function mapToCurrentWeather(
     },
     location: { ...location },
   };
+}
+
+/**
+ * Transform a day response from a weatherapi.com to a day model.
+ * @param {DayResponse} day - The parameter `day` is of type `DayResponse`, which
+ * is likely an object containing data related to the day weather conditions at a specific
+ * location.
+ * @returns Simplified version of `DayResponse`
+ */
+function _mapToForecastDay(day: DayResponse): ForecastDayModel['day'] {
+  return {
+    maxtempC: day.maxtemp_c,
+    maxtempF: day.maxtemp_f,
+    mintempC: day.mintemp_c,
+    mintempF: day.maxtemp_f,
+    avgtempC: day.avgtemp_c,
+    avgtempF: day.avgtemp_f,
+    maxwindMph: day.maxwind_mph,
+    maxwindKph: day.maxwind_kph,
+    avgvisKm: day.avgvis_km,
+    avgvisMiles: day.avgvis_miles,
+    avghumidity: day.avghumidity,
+    dailyWillItRain: day.daily_will_it_rain,
+    dailyChanceOfRain: day.daily_chance_of_rain,
+    dailyWillItSnow: day.daily_will_it_snow,
+    dailyChanceOfSnow: day.daily_chance_of_snow,
+    condition: day.condition,
+    uv: day.uv,
+  };
+}
+
+/**
+ * Transform a astro response from a weatherapi.com to a astro model.
+ * @param {AstroResponse} astro - The parameter `astro` is of type `AstroResponse`, which
+ * is likely an object containing data related to the astro at a specific
+ * location.
+ * @returns Simplified version of `AstroResponse`
+ */
+function _mapToForecastAstro(astro: AstroResponse): ForecastDayModel['astro'] {
+  return {
+    sunrise: astro.sunrise,
+    sunset: astro.sunset,
+    moonrise: astro.moonrise,
+    moonset: astro.moonset,
+    moonPhase: astro.moon_phase as MoonPhase,
+  };
+}
+
+/**
+ * Transform a hour response from a weatherapi.com to a astro model.
+ * @param {HourResponse} hour - The parameter `astro` is of type `HourResponse`, which
+ * is likely an object containing data related to the hour weather conditions at a specific
+ * location.
+ * @returns Simplified version of `HourResponse`
+ */
+function _mapToForecastHour(hour: HourResponse): ForecastDayModel['hour'][0] {
+  return {
+    timeEpoch: hour.time_epoch,
+    time: hour.time,
+    tempC: hour.temp_c,
+    tempF: hour.temp_f,
+    humidity: hour.humidity,
+    isDay: hour.is_day,
+    condition: hour.condition,
+    windMph: hour.wind_mph,
+    windKph: hour.wind_kph,
+    winddegree: hour.wind_degree,
+    windDir: hour.wind_dir,
+  };
+}
+
+/**
+ * Transform a forecast response from a weatherapi.com to a forecast model.
+ * @param {ForecastResponse} res - The parameter `res` is of type `ForecastResponse`, which
+ * is likely an object containing data related to the forecast weather conditions at a specific
+ * location.
+ * @returns Simplified version of `ForecastResponse`
+ */
+export function mapToForecastWeather(res: ForecastResponse): ForecastModel {
+  const { current, location, forecast } = res;
+  const mappedForecast = forecast.forecastday.map(({ day, astro, hour }) => ({
+    day: _mapToForecastDay(day),
+    astro: _mapToForecastAstro(astro),
+    hour: hour.map((_hour) => _mapToForecastHour(_hour)),
+  }));
+  return {
+    ...mapToCurrentWeather({ current, location }),
+    forecast: { forecastday: mappedForecast },
+    tomorrow: mappedForecast[1],
+    overmorrow: mappedForecast[2],
+  };
+}
+
+export function mapToTotalTemperatureByHours(hours: HourModel[]) {
+  return hours.reduce(
+    (acc, { tempC, tempF, humidity }) => {
+      acc.tempC = acc.tempC + tempC;
+      acc.tempF = acc.tempF + tempF;
+      acc.humidity = acc.humidity + humidity;
+      return acc;
+    },
+    { tempC: 0, tempF: 0, humidity: 0 }
+  );
 }

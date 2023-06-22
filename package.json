@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "nx": "nx",
-    "weather:app": "npx nx run weather-wise:serve",
+    "start": "npx nx run weather-wise:serve",
     "lint": "nx run-many --target=lint",
     "format": "nx format:write",
     "format:check": "nx format:check",
@@ -14,6 +14,7 @@
     "build": "npx nx run-many -t build --parallel=3",
     "test": "nx run-many --target=test",
     "server": "json-server --watch db.json",
+    "gen:theme-typings": "chakra-cli tokens apps/weather-wise/src/app/theme/index.ts",
     "pr": "npm run format:check & npm run lint & npm run build"
   },
   "private": true,
@@ -21,6 +22,7 @@
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@fontsource/inter": "^4.5.15",
     "@reduxjs/toolkit": "1.9.1",
     "axios": "^1.3.4",
     "framer-motion": "^10.0.0",
@@ -29,10 +31,12 @@
     "react-icons": "^4.7.1",
     "react-redux": "8.0.5",
     "react-router-dom": "^6.9.0",
+    "recharts": "^2.6.2",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
+    "@chakra-ui/cli": "^2.4.1",
     "@nrwl/cypress": "15.9.2",
     "@nrwl/eslint-plugin-nx": "15.9.2",
     "@nrwl/jest": "15.9.2",

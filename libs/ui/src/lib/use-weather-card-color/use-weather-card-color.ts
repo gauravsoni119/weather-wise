@@ -2,7 +2,7 @@ import { useColorModeValue } from '@chakra-ui/react';
 
 export const WEATHER_CARD_COLORS = {
   primary: {
-    bg: ['primary.800', 'primary.800'],
+    bg: ['primary.500', 'primary.500'],
     fg: ['white', 'white'],
   },
   secondary: {
@@ -11,11 +11,11 @@ export const WEATHER_CARD_COLORS = {
   },
   tertiary: {
     bg: ['tertiary.400', 'tertiary.400'],
-    fg: ['primary.800', 'primary.800'],
+    fg: ['primary.500', 'primary.500'],
   },
   light: {
     bg: ['white', 'white'],
-    fg: ['primary.800', 'primary.800'],
+    fg: ['primary.500', 'primary.500'],
   },
 } as const;
 

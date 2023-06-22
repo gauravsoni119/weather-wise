@@ -6,6 +6,9 @@ import { errorHandler } from '../../../../../mocks/handlers';
 import Dashboard from './dashboard';
 
 describe('Dashboard', () => {
+  const consoleWarnSpy = jest
+    .spyOn(console, 'warn')
+    .mockImplementation(() => undefined);
   it('should render dashboard', async () => {
     renderWithProviders(<Dashboard />);
     expect(screen.getByText('Loading...')).toBeInTheDocument();
@@ -20,4 +23,5 @@ describe('Dashboard', () => {
     const error = await screen.findByText('error...');
     expect(error).toBeInTheDocument();
   });
+  afterEach(() => consoleWarnSpy.mockClear());
 });
