@@ -1,22 +1,35 @@
-import { theme } from '@chakra-ui/react';
+/**
+ * Default colors used in the theme
+ * Primary color - #023047
+ * Secondary color - #FB8500
+ * Tertiary color - #9FD356
+ */
 
 const colors = {
-  // primary: {
-  //   '50': '#EFF3F6',
-  //   '100': '#D1DDE5',
-  //   '200': '#B4C8D5',
-  //   '300': '#97B2C4',
-  //   '400': '#799CB3',
-  //   '500': '#5C87A3',
-  //   '600': '#4A6C82',
-  //   '700': '#375162',
-  //   '800': '#253641',
-  //   '900': '#121B21',
-  //   lightMode: theme.colors.gray['700'],
-  //   darkMode: theme.colors.gray['700'],
-  // },
-  primary: { ...theme.colors.gray },
-  secondary: { ...theme.colors.orange },
+  primary: {
+    '50': '#07a5f5',
+    '100': '#0584c3',
+    '200': '#0573aa',
+    '300': '#046291',
+    '400': '#035279',
+    '500': '#023047',
+    '600': '#010e15',
+    '700': '#000000',
+    '800': '#000000',
+    '900': '#000000',
+  },
+  secondary: {
+    '50': '#ffd9af',
+    '100': '#ffc17c',
+    '200': '#ffb562',
+    '300': '#ffa949',
+    '400': '#ff9d2f',
+    '500': '#FB8500',
+    '600': '#c86a00',
+    '700': '#ae5c00',
+    '800': '#954f00',
+    '900': '#623400',
+  },
   tertiary: {
     50: '#f3fae4',
     100: '#e1ecc2',

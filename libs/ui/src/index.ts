@@ -6,3 +6,4 @@ export * from './lib/sidebar/sidebar';
 export * from './lib/sidebar/sidebar-context/sidebar-context';
 export * from './lib/sidebar/sidebar-container/sidebar-container';
 export * from './lib/navbar/navbar';
+export * from './lib/forecast-day/forecast-day';

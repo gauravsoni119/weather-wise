@@ -46,8 +46,8 @@ export function SidebarContainer({
       </GridItem>
       <GridItem
         area="secondarySidebar"
-        w={{ base: 0, md: '256px' }}
-        p={{ base: 0, md: 8 }}
+        w={{ base: 0, lg: '256px' }}
+        p={{ base: 0, lg: 8 }}
         bg="gray.100"
       >
         <Box pos="sticky" top={0} height="100vh" overflow="auto">

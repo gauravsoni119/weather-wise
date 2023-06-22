@@ -88,6 +88,7 @@ export function WeatherCard(props: WeatherCardProps) {
                 pr={2}
                 borderRadius="md"
                 bgColor={badgeBgColor}
+                data-testid="kpi-badge"
               >
                 {props.kpiBadge}
               </Badge>

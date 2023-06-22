@@ -4,10 +4,10 @@ import {
   PreloadedState,
 } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { currentWeatherReducer } from './current-weather/current-weather.slice';
+import { forecastReducer } from './forecast/forecast.slice';
 
 const rootReducer = combineReducers({
-  currentWeather: currentWeatherReducer,
+  forecast: forecastReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<WeatherState>) =>
