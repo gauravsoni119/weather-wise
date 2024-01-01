@@ -20,7 +20,8 @@ describe('TomorrowForecast', () => {
     const heading = screen.getByRole('heading', { level: 3 });
     const date = screen.getByText(/Thursday/i);
     expect(heading).toHaveTextContent('Tomorrow');
-    expect(date).toHaveTextContent('Thursday 25 May 2023');
+    expect(date).toHaveTextContent('Thursday');
+    expect(date).toHaveTextContent('25 May 2023');
   });
 
   it('should render average temperature', () => {
