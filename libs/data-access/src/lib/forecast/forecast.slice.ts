@@ -73,10 +73,16 @@ export const { resetForecastState } = forecastSlice.actions;
 const selectForecast = (state: WeatherState) => state.forecast;
 const selectForecastData = createSelector([selectForecast], ({ data }) => data);
 
-export const selectCurrentWeather = createSelector(
+export const selectWeatherForecast = createSelector(
   [selectForecast],
   ({ data, callState }) => ({
-    data: data ? { current: data.current, location: data.location } : undefined,
+    data: data
+      ? {
+          current: data.current,
+          location: data.location,
+          tomorrow: data.tomorrow,
+        }
+      : undefined,
     loading: !(callState as WeatherApiError).error
       ? callState
       : LOADING_STATES.Idle,
