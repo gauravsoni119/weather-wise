@@ -53,7 +53,7 @@ export function TomorrowForecast({
             w={'full'}
             justifyContent={'space-between'}
             color={'primary.800'}
-            data-testid='high-temp'
+            data-testid="high-temp"
           >
             <Text>High </Text>
             <TemperatureUnit>{forecast.day.maxtempC}</TemperatureUnit>
@@ -62,7 +62,7 @@ export function TomorrowForecast({
             w={'full'}
             justifyContent={'space-between'}
             color={'primary.800'}
-            data-testid='low-temp'
+            data-testid="low-temp"
           >
             <Text>Low </Text>
             <TemperatureUnit>{forecast.day.mintempC}</TemperatureUnit>
@@ -71,7 +71,7 @@ export function TomorrowForecast({
             w={'full'}
             justifyContent={'space-between'}
             color={'primary.800'}
-            data-testid='humidity'
+            data-testid="humidity"
           >
             <Text>Humidity </Text>
             <HumidityUnit>{forecast.day.avghumidity}</HumidityUnit>
@@ -80,7 +80,7 @@ export function TomorrowForecast({
             w={'full'}
             justifyContent={'space-between'}
             color={'primary.800'}
-            data-testid='wind'
+            data-testid="wind"
           >
             <Text>Wind </Text>
             <WindUnit>{forecast.day.maxwindMph}</WindUnit>

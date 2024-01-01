@@ -87,7 +87,10 @@ export function Dashboard() {
           <ForecastDay forecastByDaytime={forecastByDaytime} />
         </Box>
         <Box w={{ base: '100%', md: '25%' }}>
-          <TomorrowForecast forecast={data.tomorrow} localTime={data.location.localtime} />
+          <TomorrowForecast
+            forecast={data.tomorrow}
+            localTime={data.location.localtime}
+          />
         </Box>
       </Flex>
     </Fragment>

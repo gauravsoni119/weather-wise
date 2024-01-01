@@ -1,4 +1,4 @@
-import { mapToForecastWeather } from "@weather-wise/data-access";
+import { mapToForecastWeather } from '@weather-wise/data-access';
 
 export const FORECAST_MOCK = {
   location: {
