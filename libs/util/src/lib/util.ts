@@ -24,3 +24,9 @@ export function getMaxElement<TItem = unknown>(elements: TItem[]) {
   }
   return maxElement;
 }
+
+const dateFormatter = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full' });
+
+export function formatDate(date: Date) {
+  return dateFormatter.format(date);
+}

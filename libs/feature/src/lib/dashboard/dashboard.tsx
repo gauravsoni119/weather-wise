@@ -6,19 +6,20 @@ import {
   KpiCard,
   AirQualityIndicator,
   ForecastDay,
+  TomorrowForecast,
 } from '@weather-wise/ui';
 import {
   useWeatherSelector,
   fetchForecast,
   useWeatherDispatch,
-  selectCurrentWeather,
   selectForecastByDaytime,
+  selectWeatherForecast,
 } from '@weather-wise/data-access';
 import { LOADING_STATES } from '@weather-wise/util';
 
 export function Dashboard() {
   const dispatch = useWeatherDispatch();
-  const { data, loading, error } = useWeatherSelector(selectCurrentWeather);
+  const { data, loading, error } = useWeatherSelector(selectWeatherForecast);
   const forecastByDaytime = useWeatherSelector(selectForecastByDaytime);
 
   useEffect(() => {
@@ -82,13 +83,11 @@ export function Dashboard() {
         </Box>
       </Flex>
       <Flex direction={{ base: 'column', md: 'row' }} gap="5">
-        <Box w={{ base: '100%', md: '60%' }}>
+        <Box w={{ base: '100%', md: '75%' }}>
           <ForecastDay forecastByDaytime={forecastByDaytime} />
         </Box>
-        <Box w={{ base: '100%', md: '40%' }}>
-          <Card bg={'#bad279'} minHeight={270}>
-            <CardBody></CardBody>
-          </Card>
+        <Box w={{ base: '100%', md: '25%' }}>
+          <TomorrowForecast forecast={data.tomorrow} localTime={data.location.localtime} />
         </Box>
       </Flex>
     </Fragment>

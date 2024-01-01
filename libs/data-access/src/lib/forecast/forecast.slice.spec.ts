@@ -2,7 +2,7 @@ import {
   fetchForecast,
   forecastInitialState,
   forecastReducer,
-  selectCurrentWeather,
+  selectWeatherForecast,
   resetForecastState,
   selectForecastByDaytime,
 } from './forecast.slice';
@@ -77,13 +77,14 @@ describe('forecast Slice', () => {
       ...store.getState().forecast,
       data,
     };
-    describe('selectCurrentWeather', () => {
+    describe('selectWeatherForecast', () => {
       it('should select current weather', async () => {
-        const state = selectCurrentWeather({ ...store.getState(), forecast });
+        const state = selectWeatherForecast({ ...store.getState(), forecast });
         expect(state.loading).toEqual(LOADING_STATES.Idle);
         expect(state.data).toEqual({
           current: data.current,
           location: data.location,
+          tomorrow: data.tomorrow,
         });
         expect(state.error).toBeUndefined();
       });
@@ -96,7 +97,7 @@ describe('forecast Slice', () => {
           ...store.getState().forecast,
           callState: error,
         };
-        const state = selectCurrentWeather({
+        const state = selectWeatherForecast({
           ...store.getState(),
           forecast,
         });
@@ -108,7 +109,7 @@ describe('forecast Slice', () => {
           ...store.getState().forecast,
           callState: LOADING_STATES.Loading,
         };
-        const state = selectCurrentWeather({
+        const state = selectWeatherForecast({
           ...store.getState(),
           forecast,
         });

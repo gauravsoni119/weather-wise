@@ -37,7 +37,7 @@ export function ForecastDayChart(props: ForecastDayChartProps) {
   const primaryColorModeValue = useColorModeValue(primaryColor, primaryColor);
 
   return (
-    <ResponsiveContainer width="100%" height="100%" minHeight={'300px'}>
+    <ResponsiveContainer width="100%" height="100%" minHeight={'200px'}>
       <LineChart data={forecastByDaytime}>
         <CartesianGrid
           horizontal={false}
