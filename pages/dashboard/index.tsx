@@ -8,7 +8,11 @@ import { ReactElement } from "react";
 import Layout from "@/components/layout";
 import { useForecast } from "@/hooks/use-forecast";
 import DashboardSkeleton from "@/components/dashboard-skeleton";
-import { getTempByTimePeriod } from "@/lib/utils";
+import { getAirQuality, getTempByTimePeriod } from "@/lib/utils";
+import { Cloudy, Droplets, Eye, Fan, Thermometer, Wind } from "lucide-react";
+import ForecastKpiCard from "@/components/forecast-kpi-card";
+import { AIR_QUALITY_MAP } from "@/lib/constants";
+import Head from "next/head";
 
 export default function DashboardPage() {
   const { data, isLoading } = useForecast({
@@ -27,6 +31,9 @@ export default function DashboardPage() {
 
   return (
     <>
+    <Head>
+      <title>Weather Wise| Dashboard</title>
+    </Head>
       <div className="mb-6">
         <CurrentWeatherSummary
           forecastByDayTime={getTempByTimePeriod(today)}
@@ -34,7 +41,7 @@ export default function DashboardPage() {
           current={current}
         />
       </div>
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-2 gap-8 mb-8">
         <WeatherKpiCard
           title="Wind"
           subtitle="Today wind speed"
@@ -73,6 +80,32 @@ export default function DashboardPage() {
             <UvIndicator index={current.uv} className="ml-8" />
           </div>
         </WeatherKpiCard>
+      </div>
+      <div className="grid grid-cols-3 gap-4">
+        <ForecastKpiCard
+          title="Feels Like"
+          value={`${current.feelsLikeC}\u2103`}
+        >
+          <Thermometer />
+        </ForecastKpiCard>
+        <ForecastKpiCard title="Humidity" value={`${current.humidity}%`}>
+          <Droplets />
+        </ForecastKpiCard>
+        <ForecastKpiCard title="Cloud Cover" value={`${current.cloud}%`}>
+          <Cloudy />
+        </ForecastKpiCard>
+        <ForecastKpiCard title="Wind Gust" value={`${current.gustKph}km/h`}>
+          <Wind />
+        </ForecastKpiCard>
+        <ForecastKpiCard
+          title="Air Quality"
+          value={getAirQuality(current.airQuality.usEpaIndex)}
+        >
+          <Fan />
+        </ForecastKpiCard>
+        <ForecastKpiCard title="Visibility" value={`${current.visKm}km`}>
+          <Eye />
+        </ForecastKpiCard>
       </div>
     </>
   );

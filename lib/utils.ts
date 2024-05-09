@@ -3,7 +3,7 @@ import { HourModel } from "@/types/hour.model";
 import { type ClassValue, clsx } from "clsx";
 import { format } from "date-fns";
 import { twMerge } from "tailwind-merge";
-import { DAY_TIMES } from "./constants";
+import { AIR_QUALITY_MAP, DAY_TIMES } from "./constants";
 import { mapToTotalTemperatureByHours } from "./mapper";
 
 export function cn(...inputs: ClassValue[]) {
@@ -40,4 +40,8 @@ export function getTempByTimePeriod(forecastday: ForecastDayModel) {
     });
     return dayTime;
   }, [] as DayTimeForecast[]);
+}
+
+export function getAirQuality(index: number) {
+  return AIR_QUALITY_MAP[index as keyof typeof AIR_QUALITY_MAP];
 }

@@ -37,7 +37,9 @@ export function mapToCurrentWeather(
       windDir: current.wind_dir,
       windDegree: current.wind_degree,
       windKph: current.wind_kph,
+      gustKph: current.gust_kph,
       condition: { ...current.condition },
+      cloud: current.cloud,
       airQuality: {
         co: current.air_quality.co.toFixed(),
         pm2_5: current.air_quality.pm2_5.toFixed(2),
