@@ -32,7 +32,7 @@ export default function DashboardPage() {
   return (
     <>
     <Head>
-      <title>Weather Wise | Dashboard</title>
+      <title>Weather Wise| Dashboard</title>
     </Head>
       <div className="mb-6">
         <CurrentWeatherSummary
