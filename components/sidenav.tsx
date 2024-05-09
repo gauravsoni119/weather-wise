@@ -27,7 +27,7 @@ export default function SideNav({ isCollapsed = true }: SideNavProps) {
         <Link href="/" className="flex items-center justify-start p-6 md:mb-5">
           <Image
             src="/logo.png"
-            alt="Weather Wise"
+            alt="Weather Wise Logo"
             className="me-2"
             width={40}
             height={40}

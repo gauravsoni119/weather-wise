@@ -17,20 +17,20 @@ export default function Layout({ children }: MainNavProps) {
     <div className="grid md:grid-cols-layout h-screen">
       <aside
         className={cn("border-r", {
-          "w-56": !isCollapsed,
+          "w-60": !isCollapsed,
           "md:w-16": isCollapsed,
         })}
       >
         <SideNav isCollapsed={isCollapsed} />
       </aside>
-      <main className={cn("p-10")}>
+      <main className={cn("p-10 max-w-5xl w-full m-auto")}>
         <div className="flex justify-end mb-4">
           <form className="me-3">
             <Input type="search" placeholder="Search Location" />
           </form>
-          <Button variant="link" size="icon">
+          <Button variant="link" size="icon" aria-label="username">
             <Avatar>
-              <AvatarImage src="https://github.com/gauravsoni119.png" />
+              <AvatarImage src="https://github.com/gauravsoni119.png" alt="User profile" />
               <AvatarFallback>GS</AvatarFallback>
             </Avatar>
           </Button>
@@ -39,7 +39,7 @@ export default function Layout({ children }: MainNavProps) {
       </main>
       <aside
         className={cn("border-l", {
-          "w-72": !isCollapsed,
+          "w-80": !isCollapsed,
           "md:w-16": isCollapsed,
         })}
       >

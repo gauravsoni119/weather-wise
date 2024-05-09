@@ -5,6 +5,8 @@ import { Skeleton } from "./ui/skeleton";
 import { DAYS, MAX_FORECAST_HOURS } from "@/lib/constants";
 import { filterByUpcomingHours } from "@/lib/utils";
 import WeatherSummarySkeleton from "./weather-summary-skeleton";
+import DayLightIndicator from "./day-light-indicator";
+import { Moon, Sun } from "lucide-react";
 
 export default function WeatherSummary() {
   const { data, isLoading } = useForecast({
@@ -18,8 +20,8 @@ export default function WeatherSummary() {
   const {
     forecast: { forecastday },
   } = data;
-
-  let hourlyForecast = filterByUpcomingHours(forecastday[0].hour);
+  const [today] = forecastday;
+  let hourlyForecast = filterByUpcomingHours(today.hour);
   if (hourlyForecast.length < MAX_FORECAST_HOURS) {
     const diff = MAX_FORECAST_HOURS - hourlyForecast.length;
     hourlyForecast = [...hourlyForecast, ...forecastday[1].hour.slice(0, diff)];
@@ -42,6 +44,24 @@ export default function WeatherSummary() {
           ) : (
             <WeeklyForecast forecastDays={forecastday} />
           )}
+        </div>
+        <div>
+          <h4 className="mb-4" id="dayLightLabel">Sun and Moon Summary</h4>
+          <div className="flex flex-col gap-6">
+            <DayLightIndicator
+              rise={today.astro.sunrise}
+              set={today.astro.sunset}
+              icon={Sun}
+              labelledBy="dayLightLabel"
+            />
+            <DayLightIndicator
+              rise={today.astro.moonrise}
+              set={today.astro.moonset}
+              icon={Moon}
+              labelledBy="dayLightLabel"
+            />
+
+          </div>
         </div>
       </div>
     </div>

@@ -26,6 +26,7 @@ export interface CurrentModel {
   pressureMb: number;
   pressureIn: number;
   humidity: number;
+  gustKph: number;
   visKm: number;
   uv: number;
   windDir: string;
@@ -33,6 +34,7 @@ export interface CurrentModel {
   windKph: number;
   condition: ConditionResponse;
   airQuality: AirQuality;
+  cloud: number;
 }
 
 export interface CurrentWeatherModel {

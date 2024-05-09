@@ -21,3 +21,12 @@ export const DAY_TIMES = [
 ] as const;
 
 export const MAX_FORECAST_HOURS = 8 as const;
+
+export const AIR_QUALITY_MAP = {
+  1: "Good",
+  2: "Moderate",
+  3: "Unhealthy",
+  4: "Unhealthy",
+  5: "Very Unhealthy",
+  6: "Hazardous",
+} as const;
